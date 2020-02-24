@@ -16,7 +16,7 @@
     //     console.log(data);
     // });
 
-    d3.json("/pokemon.json")
+    d3.json("/output.json")
       .then(function (data) {
         console.log(data);
         d3.select('#svg-1')
@@ -27,10 +27,11 @@
           .enter()
           .append('circle')
           .attr('r', (d) => {
-            return d.height * 1
+            return d.base.Height * 1
           })
           .attr('fill', (d) =>{
-            return 'rgba(0, 0, 255, 0.25)'
+            let color = 'rgba(0, 0, 255, 0.25)'
+            return color
           })
           .attr('cx', (d, i) => {
             return 800 / data.length * i
