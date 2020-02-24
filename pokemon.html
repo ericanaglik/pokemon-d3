@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pokemon Data Visualizations</title>
 </head>
+
 <body>
+  <svg id="svg-1" width='800' height='500'></svg>
   <script src="https://d3js.org/d3.v5.js"></script>
-<script>
-//   d3.json("/pokemon.json", function(data) {
-//     console.log(data);
-// });
+  <script>
+    //   d3.json("/pokemon.json", function(data) {
+    //     console.log(data);
+    // });
 
- d3.json("/pokemon.json")
-  .then(function(data) {
-    console.log(data);
-  });
-
-</script>
+    d3.json("/pokemon.json")
+      .then(function (data) {
+        console.log(data);
+        d3.select('#svg-1')
+          .style('border', '1px solid')
+          .style('background-color', 'red')
+          .selectAll('circle')
+          .data(data)
+          .enter()
+          .append('circle')
+          .attr('r', (d) => {
+            return d.height * 1
+          })
+          .attr('fill', (d) =>{
+            return 'rgba(0, 0, 255, 0.25)'
+          })
+          .attr('cx', (d, i) => {
+            return 800 / data.length * i
+          })
+          .attr('cy', (d, i) => {
+            return 500 / 2
+          })
+      });
+  </script>
 </body>
+
 </html>
