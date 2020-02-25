@@ -9,19 +9,42 @@
 </head>
 
 <body>
-  <svg id="svg-1" width='800' height='500'></svg>
+  <svg id="svg-1" width='10000' height='500'></svg>
   <script src="https://d3js.org/d3.v5.js"></script>
   <script>
     //   d3.json("/pokemon.json", function(data) {
     //     console.log(data);
     // });
 
+    let types = {
+      'Fire': 'rgba(240,128,47, 0.25)',
+      'Water': 'rgba(104,143,240, 0.25)',
+      'Grass': 'rgba(120,200,80, 0.25)',
+      'Electric': 'rgba(248,208,49, 0.25)',
+      'Ice': 'rgba(152,215,216, 0.25)',
+      'Fighting': 'rgba(192,48,39, 0.25)',
+      'Poison': 'rgba(160,64,160, 0.25)',
+      'Ground': 'rgba(224,191,104, 0.25)',
+      'Flying': 'rgba(168,143,240, 0.25)',
+      'Psychic': 'rgba(248,87,135, 0.25)',
+      'Bug': 'rgba(168,184,33, 0.25)',
+      'Rock': 'rgba(184,160,56, 0.25)',
+      'Ghost': 'rgba(112,88,152, 0.25)',
+      'Dragon': 'rgba(112,56,248, 0.25)',
+      'Dark': 'rgba(112,88,71, 0.25)',
+      'Steel': 'rgba(184,184,208, 0.25)',
+      'Fairy': 'rgba(255,154,225, 0.25)',
+      'Normal' : 'rgba(168,167,120, 0.25)'
+    }
+
     d3.json("/output.json")
       .then(function (data) {
         console.log(data);
-        d3.select('#svg-1')
-          .style('border', '1px solid')
-          .style('background-color', 'red')
+        const svg = d3.select('#svg-1')
+        const defs = svg.append("defs");
+          svg.style('border', '1px solid')
+          .style('background-color', 'white')
+
           .selectAll('circle')
           .data(data)
           .enter()
@@ -29,12 +52,55 @@
           .attr('r', (d) => {
             return d.base.Height * 1
           })
-          .attr('fill', (d) =>{
-            let color = 'rgba(0, 0, 255, 0.25)'
-            return color
+
+          // .attr('fill', (d) =>{
+          //   // let color = 'rgba(0, 0, 255, 0.25)'
+          //   // return color
+          //   // if (d.type === 'Fire'){
+          //   //   let color = 'orange'
+          //   // } else if (d.type === 'Water'){
+          //   //   let color = 'blue'
+          //   // } else {
+          //   //   let color = 'black'
+          //   // }
+          //   return color = 'rgba(0, 0, 255, 0.25)'
+
+          // })
+          .style("fill", function (d) {
+            type1 = d.type[0]
+            type2 = d.type[d.type.length - 1]
+            const color1 = types[type1]
+            const color2 = types[type2]
+
+            const id = `${type1}-${type2}`
+            console.log(color1, color2)
+            // return "linear-gradient(90deg, rgba(120,200,80,1) 0%, rgba(160,64,160,1) 100%)"
+            // return `linear-gradient(90deg, ${color1} 0%, ${color2} 100%)`
+
+
+            var gradient = defs.append("linearGradient")
+              .attr("id", id)
+              .attr("x1", "0%")
+              .attr("x2", "100%")
+              .attr("y1", "0%")
+              .attr("y2", "100%");
+
+            gradient.append("stop")
+              .attr('class', 'start')
+              .attr("offset", "0%")
+              .attr("stop-color", color1)
+              .attr("stop-opacity", 1);
+
+            gradient.append("stop")
+              .attr('class', 'end')
+              .attr("offset", "100%")
+              .attr("stop-color", color2)
+              .attr("stop-opacity", 1);
+
+          return(`url(#${id})`)
           })
           .attr('cx', (d, i) => {
-            return 800 / data.length * i
+            return 10000 / data.length * i
           })
           .attr('cy', (d, i) => {
             return 500 / 2
