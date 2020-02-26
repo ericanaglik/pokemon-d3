@@ -19,6 +19,9 @@
     }
   </style>
   <div>Pokemon Data Visualizations</div>
+  <p> Fire - <span class="fire"></span> Water - <span class="water"></span> <br>
+    <span> Grass - <span class="grass">
+        <p><span> No (Male) - <span class="survived-no-m"></span></p>
 </head>
 
 <body>
@@ -54,6 +57,18 @@
     d3.json("/output.json")
       .then(function (data) {
         console.log(data);
+
+        // data.sort((a, b) => {
+        //   return a.base.Height - b.base.Height
+        // })
+
+        data.sort((a,b) => {
+          const t = Object.keys(types)
+          const typeA = t.indexOf(a.type[0])
+          const typeB = t.indexOf(b.type[0])
+          return typeA - typeB
+        })
+
         const svg = d3.select('#svg-1')
         const defs = svg.append("defs");
           svg.style('border', '1px solid')
