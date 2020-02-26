@@ -6,11 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pokemon Data Visualizations</title>
+
+  <link href="//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon" rel="stylesheet" type="text/css"/>
+  <style>
+    @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+    @font-face {font-family: "Pokemon"; src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot"); src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg"); }
+    div {
+      font-family: "Pokemon";
+      font-size: 50px;
+      position: relative;
+      top: -10px;
+    }
+  </style>
+  <div>Pokemon Data Visualizations</div>
 </head>
 
 <body>
-  <svg id="svg-1" width='10000' height='500'></svg>
+  <svg id="svg-1" width='10000' height='800'></svg>
   <script src="https://d3js.org/d3.v5.js"></script>
+  
   <script>
     //   d3.json("/pokemon.json", function(data) {
     //     console.log(data);
@@ -50,7 +64,7 @@
           .enter()
           .append('circle')
           .attr('r', (d) => {
-            return d.base.Height * 1
+            return d.base.Height * 2
           })
 
           // .attr('fill', (d) =>{
@@ -103,7 +117,7 @@
             return 10000 / data.length * i
           })
           .attr('cy', (d, i) => {
-            return 500 / 2
+            return 800 / 2
           })
       });
   </script>
