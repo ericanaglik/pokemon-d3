@@ -11,17 +11,181 @@
   <style>
     @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
     @font-face {font-family: "Pokemon"; src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot"); src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg"); }
-    div {
+    .title {
       font-family: "Pokemon";
       font-size: 50px;
-      position: relative;
+      position: fixed;
+      top: 0px;
+      left: 0;
       top: -10px;
     }
+    body {
+      position: relative;
+      top: 400px;
+      /* overflow-x: scroll;
+      max-width: 100%; */
+
+    }
+    
+    .types {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 100px;
+      left: 0;
+      max-width: 700px;
+      border: 1px;
+      border-style: solid;
+    }
+    p {
+      width: 200px;
+      text-align: center;
+    }
+    .fire {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(240,128,47, 0.25);
+      border-radius: 50%;
+    }
+    .water {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(104,143,240, 0.25);
+      border-radius: 50%;
+    }
+
+    .grass {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(120,200,80, 0.25);
+      border-radius: 50%;
+    }
+    .electric {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(248,208,49, 0.25);
+      border-radius: 50%;
+    }
+    .ice {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(152,215,216, 0.25);
+      border-radius: 50%;
+    }
+    .fighting {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(192,48,39, 0.25);
+      border-radius: 50%;
+    }
+    .poison {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(160,64,160, 0.25);
+      border-radius: 50%;
+    }
+    .ground {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(224,191,104, 0.25);
+      border-radius: 50%;
+    }
+    .flying {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(168,143,240, 0.25);
+      border-radius: 50%;
+    }
+    .psychic {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(248,87,135, 0.25);
+      border-radius: 50%;
+    }
+    .bug {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(168,184,33, 0.25);
+      border-radius: 50%;
+    }
+    .rock {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(184,160,56, 0.25);
+      border-radius: 50%;
+    }
+    .ghost {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(112,88,152, 0.25);
+      border-radius: 50%;
+    }
+    .dragon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(112,56,248, 0.25);
+      border-radius: 50%;
+    }
+    .dark {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(112,88,71, 0.25);
+      border-radius: 50%;
+    }
+    .steel {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(184,184,208, 0.25);
+      border-radius: 50%;
+    }
+    .fairy {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255,154,225, 0.25);
+      border-radius: 50%;
+    }
+    .normal {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(168,167,120, 0.25);
+      border-radius: 50%;
+    }
+
+
   </style>
-  <div>Pokemon Data Visualizations</div>
-  <p> Fire - <span class="fire"></span> Water - <span class="water"></span> <br>
-    <span> Grass - <span class="grass">
-        <p><span> No (Male) - <span class="survived-no-m"></span></p>
+  <div class="title">Pokemon Data Visualizations</div>
+  <div class="types">
+  <p> Fire - <span class="fire"></span></p> <p>Water - <span class="water"></span></p>
+<p><span> Grass - <span class="grass"><span></p> <p>Electric - <span class="electric"></span></p>
+<p>Ice - <span class="ice"></span></p> <p>Fighting - <span class="fighting"></span></p>
+<p>Poison - <span class="poison"></span></p> <p>Ground - <span class="ground"></span></p>
+<p>Flying - <span class="flying"></span></p> <p>Psychic - <span class="psychic"></span></p>
+<p>Bug - <span class="bug"></span></p> <p>Rock - <span class="rock"></span></p>
+<p>Ghost - <span class="ghost"></span></p> <p>Dragon - <span class="dragon"></span></p>
+<p>dark - <span class="dark"></span></p> <p>Steel - <span class="steel"></span></p>
+<p>Fairy - <span class="fairy"></span></p> <p>Normal - <span class="normal"></span></p>
+  
+</div>
 </head>
 
 <body>
@@ -58,21 +222,21 @@
       .then(function (data) {
         console.log(data);
 
-        // data.sort((a, b) => {
-        //   return a.base.Height - b.base.Height
-        // })
-
-        data.sort((a,b) => {
-          const t = Object.keys(types)
-          const typeA = t.indexOf(a.type[0])
-          const typeB = t.indexOf(b.type[0])
-          return typeA - typeB
+        data.sort((a, b) => {
+          return a.base.Height - b.base.Height
         })
+
+        // data.sort((a,b) => {
+        //   const t = Object.keys(types)
+        //   const typeA = t.indexOf(a.type[0])
+        //   const typeB = t.indexOf(b.type[0])
+        //   return typeA - typeB
+        // })
 
         const svg = d3.select('#svg-1')
         const defs = svg.append("defs");
-          svg.style('border', '1px solid')
-          .style('background-color', 'white')
+          svg.style('background-color', 'white')
+          
 
           .selectAll('circle')
           .data(data)
